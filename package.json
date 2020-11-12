@@ -1,0 +1,15 @@
+{
+  "name": "join-at-node",
+  "version": "1.0.0",
+  "description": "A aplicação sera uma api que armazenara informações a respeito dos usuários dos github",
+  "main": "src/index.js",
+  "repository": "https://github.com/RenanRicoldi/join-at-node.git",
+  "author": "Renan Ricoldi Frois Pedro <renan.ricoldi.frois@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
