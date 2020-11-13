@@ -1,0 +1,1 @@
+module.exports = object => Object.entries(object).reduce((a,[k,v]) => (v == null ? a : (a[k]=v, a)), {})
