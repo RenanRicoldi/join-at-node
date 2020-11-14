@@ -10,10 +10,6 @@ module.exports = {
 
         const user = await userRepository.findByPk(userId)
 
-        if(!user) {
-            throw new Error('No users found with the provided id')
-        }
-
         await userRepository.update(filteredNewProperties, { 
             where: {
                 id: userId

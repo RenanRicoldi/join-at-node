@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const filterUser = require('../utils/filterUser')
 
-class UserRepository extends User{
+class UserRepository{
     async findUsers() {
         try {
             const users = await User.findAndCountAll()            
@@ -44,6 +44,28 @@ class UserRepository extends User{
         if(status !== 1) {
             throw new Error('Failed to delete user')
         }
+
+        return user
+    }
+
+    async create(user) {
+        const created = await User.create(user)
+
+        return created
+    }
+
+    async findOne(options) {
+        const user = await User.findOne(options)
+
+        return user
+    }
+
+    async update(properties, options) {
+        await User.update(properties, options)
+    }
+
+    async findByPk(id) {
+        const user = await User.findByPk(id)
 
         return user
     }

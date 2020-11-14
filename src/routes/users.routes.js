@@ -3,6 +3,7 @@ const { Router, response, request } = require('express')
 const UserRepository = require('../repositories/UserRepository')
 const createUserService = require('../services/CreateUserService')
 const updateUserService = require('../services/UpdateUserService')
+const authenticateUserService = require('../services/AuthenticateUserService')
 
 const usersRouter = Router()
 
@@ -91,6 +92,16 @@ usersRouter.put('/:id', async (request, response) => {
 usersRouter.delete('/:id', async (request, response) => {
     try {
         const user = await userRepository.deleteUser(request.params.id)
+
+        return response.status(200).json(user)
+    } catch(error) {
+        return response.status(400).json({ error: error.message })
+    }
+})
+
+usersRouter.get('/auth/:username', async (request, response) => {
+    try {
+        const user = await authenticateUserService.execute(request.params.username)
 
         return response.status(200).json(user)
     } catch(error) {
