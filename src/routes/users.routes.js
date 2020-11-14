@@ -1,4 +1,4 @@
-const { Router, response, request } = require('express')
+const { Router } = require('express')
 
 const UserRepository = require('../repositories/UserRepository')
 const createUserService = require('../services/CreateUserService')
@@ -43,10 +43,6 @@ usersRouter.post('/', async (request, response) => {
             username,
             bio
         } = request.body
-
-        if(!name || !email || !localization || !avatar || !username || !bio) {
-            throw new Error('The necessary fields were not provided')
-        }
 
         const user = await createUserService.execute({
             name,

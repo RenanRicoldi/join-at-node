@@ -1728,6 +1728,11 @@ validator@^10.11.0:
   resolved "https://registry.yarnpkg.com/validator/-/validator-10.11.0.tgz#003108ea6e9a9874d31ccc9e5006856ccd76b228"
   integrity sha512-X/p3UZerAIsbBfN/IwahhYaBbY68EN/UQBWHtsbXGT5bfrH/p4NQzUCG1kF/rtKaNpnJ7jAu6NGTdSNtyNIXMw==
 
+validatorjs@^3.21.0:
+  version "3.21.0"
+  resolved "https://registry.yarnpkg.com/validatorjs/-/validatorjs-3.21.0.tgz#4c6bbceb36b4be6334ac4e9cdd7f30a5c3f14c04"
+  integrity sha512-YguPf+VDg6bk29cotMDqz/wuBqpgUnOUdbW6B4wHTX10Tz/Jmcz0PF7PdjjXG3XSrWwSr0+OX7Dg2+Lsv5zAZQ==
+
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
