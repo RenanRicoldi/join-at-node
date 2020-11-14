@@ -6,7 +6,7 @@ A aplicação sera uma api que armazenara informações a respeito dos usuários
 
 - [x] A aplicação usa express com o (sequelize)
 - [x] CRUD de users (nome, email, localização, avatar, username, bio). Um usuário deve ser único
-- [ ] O método de autenticação devera buscar se o usuário esta cadastrado na tabela users, se sim retornar os dados com sucesso, e armazenar o id do usuário e a data da requisição em uma tabela chamada Tokens.
+- [x] O método de autenticação devera buscar se o usuário esta cadastrado na tabela users, se sim retornar os dados com sucesso, e armazenar o id do usuário e a data da requisição em uma tabela chamada Tokens.
 - [ ] CRUD de follower (todo follower deve ser um usuário, criar a relação pertinente para follower e user).
 - [ ] CRUD de following (todo following deve ser um usuário, criar a relação pertinente para following e user).
 - [ ] CRUD de repositories (nome, description, public, slug). A propriedade slug deve ser concatenada com o nome de usuário e o nome do repositório.
