@@ -24,6 +24,11 @@ class User extends Model {
             foreignKey: 'user_id',
             as: 'followers'
         })
+
+        this.hasMany(models.Following, {
+            foreignKey: 'user_id',
+            as: 'followings'
+        })
     }
 }
 
