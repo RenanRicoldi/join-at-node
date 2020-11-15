@@ -2,7 +2,6 @@ const { v4, validate } = require('uuid')
 
 const UserRepository = require('../repositories/UserRepository')
 const FollowerRepository = require('../repositories/FollowerRepository')
-const filterUser = require('../utils/filterUser')
 
 module.exports = {
     execute: async ({ userId, followerId }) => {

@@ -24,7 +24,7 @@ class FollowerRepository {
             })
 
             const filteredFollowers = {
-                data: followers.rows.map( follower => ({
+                data: followers.rows.map(follower => ({
                     id: follower.id,
                     user_id: follower.user_id,
                     follower_id: follower.follower_id,
@@ -32,8 +32,6 @@ class FollowerRepository {
                 })),
                 count: followers.count
             }
-            
-            
 
             return filteredFollowers
         } catch(error) {
