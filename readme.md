@@ -12,7 +12,8 @@ A aplicação sera uma api que armazenara informações a respeito dos usuários
 - [x] CRUD de repositories (nome, description, public, slug). A propriedade slug deve ser concatenada com o nome de usuário e o nome do repositório.
 - [x] CRUD de repositories stars (Esse crud devera manter a relação de usuários que deram stars para um repositório, criar relação pertinente entre users, repositories).
 - [x] Gostaríamos de ver os campos necessários para os endpoints fossem validados na request, opcional.
-
+- [x] A Api irá fornecer dados para o protótipo disponibilizado no [link](https://xd.adobe.com/view/1798f30c-7746-444c-bffa-91b29835eef5-42cb/ 'Protótipo').
+- [x] Os métodos get, post, put, devem ser coerentes com os retornos necessários definidos no protótipo.
 ### ✅ Rodando
 
 Foi utilizado Node com JavaScript, então para rodar basta executar
