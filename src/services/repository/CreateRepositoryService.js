@@ -1,8 +1,8 @@
 const { v4 } = require('uuid')
 
 const Validator = require('validatorjs')
-const UserRepository = require('../repositories/UserRepository')
-const RepositoryRepository = require('../repositories/RepositoryRepository')
+const UserRepository = require('../../repositories/UserRepository')
+const RepositoryRepository = require('../../repositories/RepositoryRepository')
 
 module.exports = {
     execute: async ({ name, description, public, username, slug }) => {

@@ -1,8 +1,9 @@
 const { Router } = require('express')
+const idValidation = require('../middlewares/idValidation')
 
 const RepositoryRepository = require('../repositories/RepositoryRepository')
-const createRepositoryService = require('../services/CreateRepositoryService')
-const updateRepositoryService = require('../services/UpdateRepositoryService')
+const createRepositoryService = require('../services/repository/CreateRepositoryService')
+const updateRepositoryService = require('../services/repository/UpdateRepositoryService')
 
 const repositoriesRouter = Router()
 const repositoryRepository = new RepositoryRepository()
@@ -45,13 +46,13 @@ repositoriesRouter.post('/', async (request, response) => {
             slug
         })
 
-        return response.status(200).json(repository)
+        return response.status(201).json(repository)
     } catch(error) {
         return response.status(400).json({ error: error.message })
     }
 })
 
-repositoriesRouter.put('/:id', async (request, response) => {
+repositoriesRouter.put('/:id', idValidation, async (request, response) => {
     try {
         const {
             name,
@@ -73,7 +74,7 @@ repositoriesRouter.put('/:id', async (request, response) => {
     }
 })
 
-repositoriesRouter.delete('/:id', async (request, response) => {
+repositoriesRouter.delete('/:id', idValidation, async (request, response) => {
     try {
         const repository = await repositoryRepository.deleteRepository(request.params.id)
 

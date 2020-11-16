@@ -1,17 +1,12 @@
+const deleteNullProperties = require('../../utils/deleteNullProperties')
+const FollowingRepository = require('../../repositories/FollowingRepository')
+const UserRepository = require('../../repositories/UserRepository')
 const { validate } = require('uuid')
-
-const deleteNullProperties = require('../utils/deleteNullProperties')
-const FollowingRepository = require('../repositories/FollowingRepository')
-const UserRepository = require('../repositories/UserRepository')
 
 module.exports = {
     execute: async (newProperties, followingsId) => {
         const followingRepository = new FollowingRepository()
         const userRepository = new UserRepository()
-
-        if(!validate(followingsId)) {
-            throw new Error('Ids provided are not in UUID pattern')
-        }
 
         const filteredNewProperties = deleteNullProperties(newProperties)
 
@@ -45,12 +40,18 @@ module.exports = {
             throw new Error('Ids provided did not match existing followings')
         }
 
-        await followingRepository.update(filteredNewProperties, { 
-            where: {
-                id: followingsId
+        await followingRepository.update(
+            {
+                user_id: filteredNewProperties.userId,
+                follower_id: filteredNewProperties.followingId
             },
-            returning: true        
-        })
+            { 
+                where: {
+                    id: followingsId
+                },
+                returning: true        
+            }
+        )
         
         await following.reload()
 

@@ -1,8 +1,8 @@
 const Validator = require('validatorjs')
 
-const RepositoryRepository = require('../repositories/RepositoryRepository')
-const deleteNullProperties = require('../utils/deleteNullProperties')
-const filterRepository = require('../utils/filterRepository')
+const RepositoryRepository = require('../../repositories/RepositoryRepository')
+const deleteNullProperties = require('../../utils/deleteNullProperties')
+const filterRepository = require('../../utils/filterRepository')
 
 module.exports = {
     execute: async(newProperties, repositoryId) => {

@@ -1,8 +1,8 @@
 const { v4 } = require('uuid')
 
-const UserRepository = require('../repositories/UserRepository')
-const TokenRepository = require('../repositories/TokenRepository')
-const filterUser = require('../utils/filterUser')
+const UserRepository = require('../../repositories/UserRepository')
+const TokenRepository = require('../../repositories/TokenRepository')
+const filterUser = require('../../utils/filterUser')
 
 module.exports = {
     execute: async (username) => {

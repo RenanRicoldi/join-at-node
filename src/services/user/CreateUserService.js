@@ -2,8 +2,8 @@ const { v4 } = require('uuid')
 const { Op } = require('sequelize')
 const Validator = require('validatorjs')
 
-const UserRepository = require('../repositories/UserRepository')
-const filterUser = require('../utils/filterUser')
+const UserRepository = require('../../repositories/UserRepository')
+const filterUser = require('../../utils/filterUser')
 
 module.exports = {
     execute: async ({ name, email, localization, avatar, username, bio }) => {

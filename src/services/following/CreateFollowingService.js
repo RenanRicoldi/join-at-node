@@ -1,7 +1,7 @@
 const { v4, validate } = require('uuid')
 
-const UserRepository = require('../repositories/UserRepository')
-const FollowingRepository = require('../repositories/FollowingRepository')
+const UserRepository = require('../../repositories/UserRepository')
+const FollowingRepository = require('../../repositories/FollowingRepository')
 
 module.exports = {
     execute: async ({ userId, followingId }) => {

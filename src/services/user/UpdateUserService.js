@@ -1,8 +1,8 @@
 const Validator = require('validatorjs')
 
-const filterUser = require('../utils/filterUser')
-const deleteNullProperties = require('../utils/deleteNullProperties')
-const UserRepository = require('../repositories/UserRepository')
+const filterUser = require('../../utils/filterUser')
+const deleteNullProperties = require('../../utils/deleteNullProperties')
+const UserRepository = require('../../repositories/UserRepository')
 
 module.exports = {
     execute: async (newProperties, userId) => {
@@ -13,7 +13,7 @@ module.exports = {
         const rules = {
             name: 'string',
             email: 'email',
-            email: 'string',
+            localization: 'string',
             avatar: 'url',
             username: 'string',
             bio: 'string',

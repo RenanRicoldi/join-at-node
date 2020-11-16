@@ -1,8 +1,9 @@
 const { Router } = require('express')
+const idValidation = require('../middlewares/idValidation')
 
 const FollowingRepository = require('../repositories/FollowingRepository')
-const createFollowingService = require('../services/CreateFollowingService')
-const updateFollowingService = require('../services/UpdateFollowingService')
+const createFollowingService = require('../services/following/CreateFollowingService')
+const updateFollowingService = require('../services/following/UpdateFollowingService')
 
 const followingRepository = new FollowingRepository()
 
@@ -18,7 +19,7 @@ followingsRouter.get('/', async (request, response) => {
     }
 })
 
-followingsRouter.get('/:id', async (request, response) => {
+followingsRouter.get('/:id', idValidation, async (request, response) => {
     try {
         const followings = await followingRepository.findFollowingsByUserId(request.params.id)
 
@@ -46,7 +47,7 @@ followingsRouter.post('/', async (request, response) => {
     }
 })
 
-followingsRouter.put('/:id', async (request, response) => {
+followingsRouter.put('/:id', idValidation, async (request, response) => {
     try {
         const {
             userId,
@@ -64,7 +65,7 @@ followingsRouter.put('/:id', async (request, response) => {
     }
 })
 
-followingsRouter.delete('/:id', async (request, response) => {
+followingsRouter.delete('/:id', idValidation, async (request, response) => {
     try {
         const following = await followingRepository.destroy(request.params.id)
 

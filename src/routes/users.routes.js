@@ -1,9 +1,10 @@
 const { Router } = require('express')
 
 const UserRepository = require('../repositories/UserRepository')
-const createUserService = require('../services/CreateUserService')
-const updateUserService = require('../services/UpdateUserService')
-const authenticateUserService = require('../services/AuthenticateUserService')
+const createUserService = require('../services/user/CreateUserService')
+const updateUserService = require('../services/user/UpdateUserService')
+const authenticateUserService = require('../services/user/AuthenticateUserService')
+const idValidation = require('../middlewares/idValidation')
 
 const usersRouter = Router()
 
@@ -23,7 +24,7 @@ usersRouter.get('/', async (request, response) => {
  * TODO: Return number of followers, followings, repos
  */
 
-usersRouter.get('/:id', async (request, response) => {
+usersRouter.get('/:id', idValidation, async (request, response) => {
     try {
         const user = await userRepository.findUserById(request.params.id)
 
@@ -59,7 +60,7 @@ usersRouter.post('/', async (request, response) => {
     }
 })
 
-usersRouter.put('/:id', async (request, response) => {
+usersRouter.put('/:id', idValidation, async (request, response) => {
     try {
         const {
             name,
@@ -85,7 +86,7 @@ usersRouter.put('/:id', async (request, response) => {
     }
 })
 
-usersRouter.delete('/:id', async (request, response) => {
+usersRouter.delete('/:id', idValidation, async (request, response) => {
     try {
         const user = await userRepository.deleteUser(request.params.id)
 
