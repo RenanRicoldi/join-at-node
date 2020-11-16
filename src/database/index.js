@@ -21,6 +21,7 @@ User.associate(sequelize.models)
 Token.associate(sequelize.models)
 Follower.associate(sequelize.models)
 Following.associate(sequelize.models)
+Repository.associate(sequelize.models)
 RepositoriesStar.associate(sequelize.models)
 
 module.exports = sequelize

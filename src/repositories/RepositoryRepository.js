@@ -21,19 +21,26 @@ class RepositoryRepository {
 
     async findRepositoriesByUsername(username) {
         try {
-            const repositories = await Repository.findAndCountAll({
+            const repositories = await Repository.findAll({
                 where: {
                     slug: {
                         [Op.like]: `%/${username}/%`
                     }
-                }
+                },
+                include: [{
+                    association: 'repositories_stars'
+                }]
             })
 
-            const filteredRepositories = {
-                data: repositories.rows.map(repository => filterRepository(repository)),
-                count: repositories.count
-            }
-    
+            const filteredRepositories = repositories.map(repository => ({
+                id: repository.id,
+                name: repository.name,
+                description: repository.description,
+                public: repository.public,
+                slug: repository.slug,
+                stars: repository.repositories_stars.length
+            }))
+
             return filteredRepositories
         } catch (error) {
             throw new Error('No repositories found with the provided username')

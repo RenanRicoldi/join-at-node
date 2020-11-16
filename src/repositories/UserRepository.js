@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const filterUser = require('../utils/filterUser')
-
+const RepositoryRepository = require('../repositories/RepositoryRepository')
+const { findAll } = require('../models/User')
 class UserRepository{
     async findUsers() {
         try {
@@ -19,10 +20,81 @@ class UserRepository{
 
     async findUserById(userId) {
         try {
-            const user = await User.findByPk(userId)
-            const filteredUser = filterUser(user)
-    
-            return filteredUser
+            const repositoryRepository = new RepositoryRepository()
+            
+            const user = await User.findByPk(userId, {
+                include: [
+                    {
+                        association: 'followers',                    
+                    },
+                    {
+                        association: 'followings'
+                    }
+                ]
+            })
+
+            const repositories = await repositoryRepository.findRepositoriesByUsername(user.username)
+
+            const {
+                id,
+                name,
+                email,
+                localization,
+                avatar,
+                username,
+                bio,
+                followers,
+                followings
+            } = user
+
+            console.log(user)
+
+            // console.log(await User.findByPk(followers.data[0].follower_id))
+
+            const followersIds = followers.map(follower => follower.follower_id)
+            const followingsIds = followings.map(following => following.following_id)
+
+            const filteredFollowers = await User.findAll({
+                where: {
+                    id: followersIds
+                }
+            })
+
+            const filteredFollowings = await User.findAll({
+                where: {
+                    id: followingsIds
+                }
+            })
+
+            return {
+                id,
+                name,
+                email,
+                localization,
+                avatar,
+                username,
+                bio,
+                followers: {
+                    data: filteredFollowers.map(follower => ({
+                        id: follower.id,
+                        username: follower.username,
+                        avatar: follower.avatar,
+                    })),
+                    count: filteredFollowers.length
+                },
+                following: {
+                    data: filteredFollowings.map(following => ({
+                        id: following.id,
+                        username: following.username,
+                        avatar: following.avatar,
+                    })),
+                    count: filteredFollowings.length
+                },
+                repositories: {
+                    data: repositories,
+                    count: repositories.length
+                }
+            }
         } catch (error) {
             throw new Error('No users found with the provided id')
         }

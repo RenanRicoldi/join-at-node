@@ -20,10 +20,6 @@ usersRouter.get('/', async (request, response) => {
     }
 })
 
-/**
- * TODO: Return number of followers, followings, repos
- */
-
 usersRouter.get('/:id', idValidation, async (request, response) => {
     try {
         const user = await userRepository.findUserById(request.params.id)
