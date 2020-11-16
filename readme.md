@@ -10,7 +10,7 @@ A aplicação sera uma api que armazenara informações a respeito dos usuários
 - [x] CRUD de follower (todo follower deve ser um usuário, criar a relação pertinente para follower e user).
 - [x] CRUD de following (todo following deve ser um usuário, criar a relação pertinente para following e user).
 - [x] CRUD de repositories (nome, description, public, slug). A propriedade slug deve ser concatenada com o nome de usuário e o nome do repositório.
-- [ ] CRUD de repositories stars (Esse crud devera manter a relação de usuários que deram stars para um repositório, criar relação pertinente entre users, repositories).
+- [x] CRUD de repositories stars (Esse crud devera manter a relação de usuários que deram stars para um repositório, criar relação pertinente entre users, repositories).
 - [ ] Gostaríamos de ver os campos necessários para os endpoints fossem validados na request, opcional.
 
 ### ✅ Rodando
