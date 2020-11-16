@@ -22,10 +22,14 @@ module.exports = {
         const validation = new Validator(filteredNewProperties, rules)
 
         if(validation.fails()) {
-            throw new Error('Not all necessary fields provided or fields are not in correct format')
+            throw new Error('Fields are not in correct format')
         }
 
         const user = await userRepository.findByPk(userId)
+
+        if(!user) {
+            throw new Error('No users found with the provided id')
+        }
 
         await userRepository.update(filteredNewProperties, { 
             where: {

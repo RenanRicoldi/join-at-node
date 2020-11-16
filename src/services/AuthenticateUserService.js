@@ -1,5 +1,4 @@
 const { v4 } = require('uuid')
-const { Op } = require('sequelize')
 
 const UserRepository = require('../repositories/UserRepository')
 const TokenRepository = require('../repositories/TokenRepository')
