@@ -29,6 +29,11 @@ class User extends Model {
             foreignKey: 'user_id',
             as: 'followings'
         })
+
+        this.hasMany(models.RepositoriesStar, {
+            foreignKey: 'user_id',
+            as: 'repositories_stars'
+        })
     }
 }
 
