@@ -50,7 +50,7 @@ module.exports = {
             email,
             localization,
             avatar,
-            username,
+            username: username.split(' ').join('-'),
             bio
         })
     

@@ -32,8 +32,6 @@ class FollowingRepository {
                 })),
                 count: followings.count
             }
-            
-            
 
             return filteredFollowings
         } catch(error) {

@@ -1,4 +1,4 @@
-const { v4, validate } = require('uuid')
+const { validate } = require('uuid')
 
 const deleteNullProperties = require('../../utils/deleteNullProperties')
 const UserRepository = require('../../repositories/UserRepository')

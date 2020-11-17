@@ -1,4 +1,4 @@
-const { Router, response } = require('express')
+const { Router } = require('express')
 
 const createRepositoryStarService = require('../services/repositoryStar/CreateRepositoryStarService')
 const updateRepositoryStarService = require('../services/repositoryStar/UpdateRepositoryStarService')
@@ -57,6 +57,16 @@ repositoriesStarsRouter.put('/:id', idValidation, async (request, response) => {
             userId,
             repositoryId
         }, request.params.id)
+
+        return response.status(200).json(repositoryStar)
+    } catch(error) {
+        return response.status(400).json({ error: error.message })
+    }
+})
+
+repositoriesStarsRouter.delete('/:id', idValidation, async (request, response) => {
+    try {
+        const repositoryStar = await repositoriesStarsRepository.deleteRepositoryStars(request.params.id)
 
         return response.status(200).json(repositoryStar)
     } catch(error) {

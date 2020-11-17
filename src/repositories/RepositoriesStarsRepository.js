@@ -1,8 +1,4 @@
 const RepositoryStars = require('../models/RepositoriesStar')
-const filterRepository = require('../utils/filterRepository')
-
-const { Op } = require('sequelize')
-const { validate } = require('uuid')
 
 class RepositoryStarsRepository {
     async findRepositoriesStars() {
