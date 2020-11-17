@@ -60,19 +60,21 @@ module.exports = {
                 }
             })
 
-            let oldSlug = repository.slug.split('/')
+            if(repository) {
+                let oldSlug = repository.slug.split('/')
 
-            oldSlug[oldSlug.length - 2] = username
-            
-            await repositoryRepository.update({
-                slug: oldSlug.join('/')
-            }, {
-                where: {
-                    slug: {
-                        [Op.like]: `%/${user.username}/%`
+                oldSlug[oldSlug.length - 2] = username
+                
+                await repositoryRepository.update({
+                    slug: oldSlug.join('/')
+                }, {
+                    where: {
+                        slug: {
+                            [Op.like]: `%/${user.username}/%`
+                        }
                     }
-                }
-            })
+                })
+            }
         }
 
         if(username) {
